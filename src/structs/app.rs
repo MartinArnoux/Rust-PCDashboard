@@ -33,15 +33,16 @@ impl App {
     }
 
     pub fn subscription(&self) -> Subscription<Message> {
-        if self.ping_controller.is_pinging() {
-            if self.ping_controller.had_receive() {
-                time::every(self.ping_settings.get_interval_ping()).map(|_| Message::NextPing)
-            }else {
-                Subscription::none()
-            }
-        }else {
-            Subscription::none()
+        if !self.ping_controller.is_pinging() {
+            return Subscription::none()
         }
+        
+        if self.ping_controller.had_receive() {
+            return Subscription::none()
+        }
+
+        time::every(self.ping_settings.get_interval_ping()).map(|_| Message::NextPing)
+
     }
 
     pub fn view(&self) -> Element<Message> {
