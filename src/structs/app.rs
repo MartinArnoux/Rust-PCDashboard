@@ -3,7 +3,6 @@ use iced::widget::{button, text, container,row};
 use iced::{Alignment, Element, Subscription, Task, time::{self},};
 use crate::structs::ping_controller::{PingController, PingControllerError};
 use crate::structs::{ping_settings::{PingSettings}};
-//Subscription pour le ping ! a regarder
 
 pub struct App {
     ping_settings: PingSettings,
