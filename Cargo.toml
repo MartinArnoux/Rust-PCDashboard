@@ -6,6 +6,7 @@ edition = "2024"
 [dependencies]
 circular-buffer = "1.2.0"
 iced = { version = "0.13.1", features = ["tokio"] }
+log = "0.4.29"
 ping-rs = "0.1.2"
 sysinfo = "0.37.2"
 tokio = { version = "1.48.0", features = ["full"] }

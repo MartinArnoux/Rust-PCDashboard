@@ -28,14 +28,4 @@ impl PingSettings {
     }
 
 
-    // pub async fn ping_continuous(&mut self,) -> () {
-    //     self.is_pinging = true;
-    //     while self.is_pinging{
-    //         match self.ping_once().await {
-    //             Ok(rtt) => println!("Ping réussi: {}ms" , rtt),
-    //             Err(e) => println!("Pring échoué: {}",e),
-    //         }
-    //         tokio::time::sleep(self.interval_ping).await;
-    //     }
-    // }
 }

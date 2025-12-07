@@ -1,5 +1,5 @@
 use std::time::Duration;
-
+use log::error;
 use circular_buffer::CircularBuffer;
 
 use crate::structs::ping_settings::{PingSettings};
@@ -51,9 +51,9 @@ impl PingController{
         let timeout = Duration::from_secs(3);
         let options = ping_rs::PingOptions { ttl: 128, dont_fragment: true };
         let result = ping_rs::send_ping(&addr, timeout, &data, Some(&options));
-        match result {//println!("Reply from {}: bytes={} time={}ms TTL={}", reply.address, data.len(), reply.rtt, options.ttl)
+        match result {
             Ok(reply) => { self.pings.push_back(Ok(reply.rtt.clone())); },
-            Err(e) =>  { println!("Erreur: {:?}",e);self.pings.push_back(Err(PingControllerError::ErrConnection)); }
+            Err(e) =>  { error!("Erreur: {:?}",e) ;self.pings.push_back(Err(PingControllerError::ErrConnection)); }
         };
         self.receive = true;
     }
