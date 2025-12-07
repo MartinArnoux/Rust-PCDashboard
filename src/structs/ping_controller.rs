@@ -24,14 +24,10 @@ impl PingController{
     }
 
     pub fn get_last_ping(&self) -> Result<u32,PingControllerError>{
-        let last_ping: Result<u32,PingControllerError> = self.pings.back()
+        self.pings.back()
         .cloned()
-        .ok_or(PingControllerError::NoLastPing)?;
+        .ok_or(PingControllerError::NoLastPing)?
 
-        match last_ping {
-            Ok(v) => Ok(v),
-            Err(e) => Err(e)
-        }
     }
 
     pub fn had_receive(&self) -> bool {
