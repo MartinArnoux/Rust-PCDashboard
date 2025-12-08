@@ -17,8 +17,6 @@ impl PingSettings {
         }
     }
 
-    
-
     pub fn get_address(&self) -> IpAddr {
         self.address
     }
